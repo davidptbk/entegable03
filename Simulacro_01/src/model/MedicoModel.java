@@ -86,7 +86,7 @@ public class MedicoModel implements CRUD {
         boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE medico SET nombre = ?, apellidos = ?, id_especialidad = ? WHERE id_medico = ?;";
+            String sql = "UPDATE medico SET nombre = ?, apellidos = ?, id_especialidad = ? WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1, objMedico.getNombre());
@@ -116,7 +116,7 @@ public class MedicoModel implements CRUD {
         boolean isDelete = false;
 
         try {
-            String sql = "DELETE FROM medico WHERE id_medico = ?;";
+            String sql = "DELETE FROM medico WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setInt(1, objMedico.getId());
 
