@@ -79,7 +79,7 @@ public class EspecialidadModel implements CRUD {
         boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE especialidad SET nombre = ?, descripcion = ? WHERE id_especialidad = ?;";
+            String sql = "UPDATE especialidad SET nombre = ?, descripcion = ? WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1, objEspecialidad.getNombre());
@@ -106,7 +106,7 @@ public class EspecialidadModel implements CRUD {
         boolean isDelete = false;
 
         try {
-            String sql = "DELETE FROM especialidad WHERE id_especialidad = ?;";
+            String sql = "DELETE FROM especialidad WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setInt(1, objEspecialidad.getId());
 
@@ -129,7 +129,7 @@ public class EspecialidadModel implements CRUD {
         Especialidad objEspecialidad = null;
 
         try {
-            String sql = "SELECT * FROM especialidad WHERE id_especialidad = ?;";
+            String sql = "SELECT * FROM especialidad WHERE id = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setInt(1, id_especialidad);
 
@@ -137,7 +137,7 @@ public class EspecialidadModel implements CRUD {
 
             if (objResult.next()){
                 objEspecialidad = new Especialidad();
-                objEspecialidad.setId(objResult.getInt("id_especialidad"));
+                objEspecialidad.setId(objResult.getInt("id"));
                 objEspecialidad.setNombre(objResult.getString("nombre"));
                 objEspecialidad.setDescripcion(objResult.getString("descripcion"));
             }
